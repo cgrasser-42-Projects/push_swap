@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:57:47 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/11/28 15:11:10 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:59:33 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 #define PUSH_SWAP_H
 
 #include "../libft/include/libft.h"
+
+typedef struct s_data {
+	int	value;
+	int	index;
+} t_data;
 
 int	main(int argc, char *args[]);
 
