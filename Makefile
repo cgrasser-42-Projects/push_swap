@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 14:44:00 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/01 15:47:45 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/01 17:04:36 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,6 @@ GREEN = \033[32m
 YELLOW = \033[93m
 RESET = \033[0m
 
-BANNER = printf " ██████$(GREEN)╗$(RESET) ██$(GREEN)╗$(RESET)   ██$(GREEN)╗$(RESET)███████$(GREEN)╗$(RESET)██$(GREEN)╗$(RESET)  ██$(GREEN)╗$(RESET)        ███████$(GREEN)╗$(RESET)██$(GREEN)╗$(RESET)    ██$(GREEN)╗$(RESET) █████$(GREEN)╗$(RESET) ██████$(GREEN)╗$(RESET)     \
-\n ██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)║$(RESET)   ██$(GREEN)║$(RESET)██$(GREEN)╔════╝$(RESET)██$(GREEN)║$(RESET)  ██$(GREEN)║$(RESET)        ██$(GREEN)╔════╝$(RESET)██$(GREEN)║$(RESET)    ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)    \
-\n ██████$(GREEN)╔╝$(RESET)██$(GREEN)║$(RESET)   ██$(GREEN)║$(RESET)███████$(GREEN)╗$(RESET)███████$(GREEN)║$(RESET)        ███████$(GREEN)╗$(RESET)██$(GREEN)║$(RESET) █$(GREEN)╗$(RESET) ██$(GREEN)║$(RESET)███████$(GREEN)║$(RESET)██████$(GREEN)╔╝$(RESET)    \
-\n ██$(GREEN)╔═══╝$(RESET) ██$(GREEN)║$(RESET)   ██$(GREEN)║╚════$(RESET)██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)║        ╚════$(RESET)██$(GREEN)║$(RESET)██$(GREEN)║$(RESET)███$(GREEN)╗$(RESET)██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)║$(RESET)██$(GREEN)╔═══╝$(RESET)     \
-\n ██$(GREEN)║     ╚$(RESET)██████$(GREEN)╔╝$(RESET)███████$(GREEN)║$(RESET)██$(GREEN)║$(RESET)  ██$(GREEN)║$(RESET)███████$(GREEN)╗$(RESET)███████$(GREEN)║╚$(RESET)███$(GREEN)╔$(RESET)███$(GREEN)╔╝$(RESET)██$(GREEN)║$(RESET)  ██$(GREEN)║$(RESET)██$(GREEN)║$(RESET)         \
-\n $(GREEN)╚═╝      ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝$(RESET)         \n"
-
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 LIBFT_PATH = ./libft
@@ -49,20 +42,15 @@ LIBFT = $(LIBFT_PATH)/libft.a
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@$(CC) $(CFLAGS) -I$(LIBFT_PATH)/include -c $< -o $@
-	@printf "$(GREEN)█$(RESET)"
 
 all: $(NAME)
-	@$(BANNER)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS)
 	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
-	@echo "$(BOLD) push_swap.exe $(GREEN)✔$(RESET)\n"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD) push_swap $(GREEN)✔$(RESET)"
 
 $(LIBFT):
-	@echo "$(BOLD) Submodule libft $(YELLOW)⮯ $(RESET)"
 	@make -s -C $(LIBFT_PATH) sub
-	@echo "$(BOLD) Push_swap $(YELLOW)⮯ $(RESET)"
-
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
