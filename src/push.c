@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 14:59:52 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/01 16:00:06 by cgrasser         ###   ########.fr       */
+/*   Created: 2024/12/01 13:43:21 by cgrasser          #+#    #+#             */
+/*   Updated: 2024/12/01 15:39:35 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*void	print(void *content)
+void	push(t_list **lst_one, t_list **lst_two)
 {
-	t_data *data = (t_data *)content;
-	ft_putnbr_fd(data->value, 1);
-	ft_putchar_fd(32, 1);
-	ft_putnbr_fd(data->index, 1);
-	ft_putchar_fd('\n', 1);
-}*/
+	t_list	*tmp;
 
-int	main(int argc, char *argv[])
+	if (*lst_one)
+	{
+		tmp = *lst_one;
+		*lst_one = (*lst_one)->next;
+		tmp->next = *lst_two;
+		*lst_two = tmp;
+	}
+}
+
+void	pa(t_list **lst_b, t_list **lst_a)
 {
-	t_list	*lst_a;
-	t_list	*lst_b;
-	int		size;
+	push(lst_b, lst_a);
+	ft_putendl_fd("pa", 1);
+}
 
-	lst_a = ft_init_lst(ft_parse(argc, argv));
-	if (!lst_a)
-		return (ft_putendl_fd("Error", 2), 1);
-	lst_b = NULL;
-	size = ft_lstsize(lst_a);
-	radix_sort(&lst_a, &lst_b, size);
-	return (0);
+void	pb(t_list **lst_a, t_list **lst_b)
+{
+	push(lst_a, lst_b);
+	ft_putendl_fd("pb", 1);
 }

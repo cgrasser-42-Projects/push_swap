@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 14:44:00 by cgrasser          #+#    #+#              #
-#    Updated: 2024/11/30 00:24:42 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/01 15:47:45 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,15 @@ SRC_DIR = src/
 INC_DIR = include/
 OBJ_DIR = build/
 
-SRC = main.c
+SRC = main.c \
+	  list.c \
+	  parse.c \
+	  push.c \
+	  radix_sort.c \
+	  rotate.c \
+	  rrotate.c \
+	  swap.c \
+	  utils.c
 
 BOLD = \033[1m
 GREEN = \033[32m

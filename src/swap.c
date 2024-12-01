@@ -1,37 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 14:59:52 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/01 16:00:06 by cgrasser         ###   ########.fr       */
+/*   Created: 2024/12/01 13:51:42 by cgrasser          #+#    #+#             */
+/*   Updated: 2024/12/01 16:17:06 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*void	print(void *content)
+void	swap(t_list **lst)
 {
-	t_data *data = (t_data *)content;
-	ft_putnbr_fd(data->value, 1);
-	ft_putchar_fd(32, 1);
-	ft_putnbr_fd(data->index, 1);
-	ft_putchar_fd('\n', 1);
-}*/
+	t_list	*first;
+	t_list	*second;
 
-int	main(int argc, char *argv[])
+	if (!*lst || !(*lst)->next)
+		return ;
+	first = *lst;
+	second = (*lst)->next;
+	first->next = second->next;
+	second->next = first;
+	*lst = second;
+}
+
+void	sa(t_list **lst_a)
 {
-	t_list	*lst_a;
-	t_list	*lst_b;
-	int		size;
+	swap(lst_a);
+	ft_putendl_fd("sa", 1);
+}
 
-	lst_a = ft_init_lst(ft_parse(argc, argv));
-	if (!lst_a)
-		return (ft_putendl_fd("Error", 2), 1);
-	lst_b = NULL;
-	size = ft_lstsize(lst_a);
-	radix_sort(&lst_a, &lst_b, size);
-	return (0);
+void	sb(t_list **lst_b)
+{
+	swap(lst_b);
+	ft_putendl_fd("sb", 1);
+}
+
+void	ss(t_list **lst_a, t_list **lst_b)
+{
+	swap(lst_a);
+	swap(lst_b);
+	ft_putendl_fd("ss", 1);
 }

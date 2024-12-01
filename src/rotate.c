@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 14:59:52 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/01 16:00:06 by cgrasser         ###   ########.fr       */
+/*   Created: 2024/12/01 13:09:33 by cgrasser          #+#    #+#             */
+/*   Updated: 2024/12/01 16:14:43 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*void	print(void *content)
+void	rotate(t_list **lst)
 {
-	t_data *data = (t_data *)content;
-	ft_putnbr_fd(data->value, 1);
-	ft_putchar_fd(32, 1);
-	ft_putnbr_fd(data->index, 1);
-	ft_putchar_fd('\n', 1);
-}*/
+	t_list	*tmp;
 
-int	main(int argc, char *argv[])
+	if (!*lst && !(*lst)->next)
+		return ;
+	tmp = *lst;
+	*lst = (*lst)->next;
+	tmp->next = NULL;
+	ft_lstadd_back(lst, tmp);
+}
+
+void	ra(t_list **lst_a)
 {
-	t_list	*lst_a;
-	t_list	*lst_b;
-	int		size;
+	rotate(lst_a);
+	ft_putendl_fd("ra", 1);
+}
 
-	lst_a = ft_init_lst(ft_parse(argc, argv));
-	if (!lst_a)
-		return (ft_putendl_fd("Error", 2), 1);
-	lst_b = NULL;
-	size = ft_lstsize(lst_a);
-	radix_sort(&lst_a, &lst_b, size);
-	return (0);
+void	rb(t_list **lst_b)
+{
+	rotate(lst_b);
+	ft_putendl_fd("rb", 1);
+}
+
+void	rr(t_list **lst_a, t_list **lst_b)
+{
+	rotate(lst_a);
+	rotate(lst_b);
+	ft_putendl_fd("rr", 1);
 }

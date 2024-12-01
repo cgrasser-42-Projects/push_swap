@@ -1,37 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 14:59:52 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/01 16:00:06 by cgrasser         ###   ########.fr       */
+/*   Created: 2024/12/01 15:27:36 by cgrasser          #+#    #+#             */
+/*   Updated: 2024/12/01 15:58:48 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-/*void	print(void *content)
+int	ft_tablen(char **tab)
 {
-	t_data *data = (t_data *)content;
-	ft_putnbr_fd(data->value, 1);
-	ft_putchar_fd(32, 1);
-	ft_putnbr_fd(data->index, 1);
-	ft_putchar_fd('\n', 1);
-}*/
+	int	i;
 
-int	main(int argc, char *argv[])
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
+}
+
+void	ft_sort_int_tab(int *tab, int size)
 {
-	t_list	*lst_a;
-	t_list	*lst_b;
-	int		size;
+	int	i;
+	int	j;
+	int	temp;
 
-	lst_a = ft_init_lst(ft_parse(argc, argv));
-	if (!lst_a)
-		return (ft_putendl_fd("Error", 2), 1);
-	lst_b = NULL;
-	size = ft_lstsize(lst_a);
-	radix_sort(&lst_a, &lst_b, size);
-	return (0);
+	i = 0;
+	while (i < size -1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (tab[i] > tab[j])
+			{
+				temp = tab[i];
+				tab[i] = tab[j];
+				tab[j] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
 }
