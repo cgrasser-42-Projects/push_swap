@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 14:44:00 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/01 17:04:36 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/04 18:47:36 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRC = main.c \
 	  rotate.c \
 	  rrotate.c \
 	  swap.c \
-	  utils.c
+	  utils.c \
+	  sort.c
 
 BOLD = \033[1m
 GREEN = \033[32m
