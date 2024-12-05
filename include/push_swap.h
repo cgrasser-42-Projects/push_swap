@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:57:47 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/04 18:47:15 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:20:25 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**ft_parse(int argc, char *argv[]);
 //===================================================================| RADIX |
 
 void	radix_sort(t_list **a, t_list **b, int size);
-void	sort(t_list **a, t_list **b, int size);
+void	sort(t_list **a, t_list **b, int size, int split);
 
 //=================================================================| COMMAND |
 

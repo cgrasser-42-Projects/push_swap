@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 17:35:34 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/04 20:44:08 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:41:43 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,37 @@ void	pre_sort(t_list **a, t_list **b, int *limits)
 	}
 }
 
-int	*set_limits(int *limits, int min, int mediane, int max)
+void 	sort(t_list **a, t_list **b, int size, int split)
 {
-	limits[0] = min;
-	limits[1] = mediane;
-	limits[2] = max;
-	return (limits);
+	int min;
+	int max;
+	int	*limits;
+
+	min = split / 2 - 1;
+	max = split / 2 + 1;
+	limits = (int *)malloc(3 * sizeof(int));
+	if (!limits)
+		return ;
+	limits[1] = size / 2;
+	while (max < split)
+	{
+		limits[0] = min * (size / split);
+		limits[2] = max * (size / split);
+		pre_sort(a, b, limits);
+		max++;
+		min--;
+	}
+	limits[0] = 0;
+	limits[2] = size;
+	pre_sort(a, b, limits);
+	free(limits);
+	//pa(b,a);
+	//pa(b,a);
+	//final_sort(a, b);
+	//end_sort(a);
 }
 
-void	sort(t_list **a, t_list **b, int size)
+/*avoid	sort(t_list **a, t_list **b, int size)
 {
 	int *limits = (int *)malloc(3 * sizeof(int));
 	if (!limits)
@@ -120,4 +142,4 @@ void	sort(t_list **a, t_list **b, int size)
 	pa(b,a);
 	final_sort(a, b);
 	end_sort(a);
-}
+}*/

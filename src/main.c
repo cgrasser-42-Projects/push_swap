@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:59:52 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/04 19:00:32 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:40:55 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int	main(int argc, char *argv[])
 		return (ft_putendl_fd("Error", 2), 1);
 	lst_b = NULL;
 	size = ft_lstsize(lst_a);
-	sort(&lst_a, &lst_b, size);
+	sort(&lst_a, &lst_b, size, 16);
 	return (0);
 }
