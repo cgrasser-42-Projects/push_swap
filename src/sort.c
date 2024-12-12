@@ -6,77 +6,51 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 17:35:34 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/05 18:41:43 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 14:39:55 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
-int get_max_index(t_list *list)
+static int get_min_position(t_list *a)
 {
-    int max_index = ((t_data *)(list->content))->index;
-    list = list->next;
-    while (list)
-    {
-        int current_index = ((t_data *)(list->content))->index;
-        if (current_index > max_index)
-            max_index = current_index;
-        list = list->next;
-    }
-    return max_index;
-}
+	int	i;
+	int index_a;
 
-void	end_sort(t_list **a)
-{
-	int	last_index_a;
-	int max_index_a;
-
-	max_index_a = get_max_index(*a);
-	while (*a)
+	i = 0;
+	while (a)
 	{
-		last_index_a = ((t_data *)(ft_lstlast(*a)->content))->index;
-		if (last_index_a != max_index_a)
-			rra(a);
-		else
+		index_a = ((t_data *)(a->content))->index;
+		if (index_a == 0)
 			break ;
+		a = a->next;
+		i++;
 	}
+	return (i);
 }
 
-
-void	final_sort(t_list **a, t_list **b)
+static void end_sort(t_list **a, int size)
 {
-	int	index_a;
-	int index_b;
-	int last_index_a;
-	int max_index_a;
+	int cost;
 
-	max_index_a = get_max_index(*a);
-	while (*b)
+	cost = calculate_rotation_cost(size, get_min_position(*a));
+	while (cost > 0)
 	{
-		index_a = ((t_data *)((*a)->content))->index;
-		index_b = ((t_data *)((*b)->content))->index;
-		last_index_a = ((t_data *)(ft_lstlast(*a)->content))->index;
-		if (index_a > index_b && last_index_a < index_b)
-			pa(b, a);
-		else if (index_a > index_b && last_index_a == max_index_a)
-			pa(b, a);
-		else if (index_a < index_b && index_b > max_index_a && last_index_a == max_index_a)
-		{
-			pa(b, a);
-			ra(a);
-			max_index_a = index_b;
-		}
-		else if (index_a < index_b)
-			ra(a);
-		else
-			rra(a);
+		ra(a);
+		cost--;
+	}
+	while (cost < 0)
+	{
+		rra(a);
+		cost++;
 	}
 }
 
-void	pre_sort(t_list **a, t_list **b, int *limits)
+static void	pre_sort(t_list **a, t_list **b, int *limits)
 {
 	int i;
 	int index_a;
+	int index_a_next;
 
 	i = ft_lstsize(*b);
 	while (i < (limits[2] - limits[0]) && *a)
@@ -90,12 +64,26 @@ void	pre_sort(t_list **a, t_list **b, int *limits)
 		else if (index_a < limits[1] && index_a >= limits[0])
 		{
 			pb(a,b);
-			rb(b);
+			index_a_next = ((t_data *)((*a)->content))->index;
+			if (!(index_a_next >= limits[1] && index_a_next < limits[2])
+				&& !(index_a_next < limits[1] && index_a_next >= limits[0]))
+				rr(a, b);
+			else
+				rb(b);
 			i++;
 		}
 		else
 			ra(a);
 	}
+}
+
+static void	optimal_sort(t_list **a, t_list **b)
+{
+    while (*b)
+    {
+        t_cost best_move = calculate_best_move(*a, *b);
+        execute_best_move(a, b, best_move);
+    }
 }
 
 void 	sort(t_list **a, t_list **b, int size, int split)
@@ -118,28 +106,10 @@ void 	sort(t_list **a, t_list **b, int size, int split)
 		max++;
 		min--;
 	}
-	limits[0] = 0;
-	limits[2] = size;
+	limits[0] = 1;
+	limits[2] = size - 1;
 	pre_sort(a, b, limits);
 	free(limits);
-	//pa(b,a);
-	//pa(b,a);
-	//final_sort(a, b);
-	//end_sort(a);
+	optimal_sort(a, b);
+	end_sort(a, size);
 }
-
-/*avoid	sort(t_list **a, t_list **b, int size)
-{
-	int *limits = (int *)malloc(3 * sizeof(int));
-	if (!limits)
-		return ;
-	pre_sort(a, b, set_limits(limits, 3 * (size / 8), size / 2, 5 * (size / 8)));
-	pre_sort(a, b, set_limits(limits, 2 * (size / 8), size / 2, 6 * (size / 8)));
-	pre_sort(a, b, set_limits(limits, size / 8, size / 2, 7 * (size / 8)));
-	pre_sort(a, b, set_limits(limits, 0, size / 2, size));
-	free(limits);
-	pa(b,a);
-	pa(b,a);
-	final_sort(a, b);
-	end_sort(a);
-}*/

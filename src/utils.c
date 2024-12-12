@@ -6,11 +6,11 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 15:27:36 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/01 15:58:48 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:12:32 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 int	ft_tablen(char **tab)
 {
@@ -20,6 +20,26 @@ int	ft_tablen(char **tab)
 	while (tab[i])
 		i++;
 	return (i);
+}
+
+int	contains_duplicates(int *arr, int size)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 void	ft_sort_int_tab(int *tab, int size)
@@ -45,3 +65,29 @@ void	ft_sort_int_tab(int *tab, int size)
 		i++;
 	}
 }
+
+long	ft_atol(const char *str)
+{
+	int		i;
+	int		sgn;
+	long	to_return;
+
+	i = 0;
+	sgn = 1;
+	to_return = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sgn *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		to_return = to_return * 10 + (str[i] - 48);
+		i++;
+	}
+	return (to_return * sgn);
+}
+

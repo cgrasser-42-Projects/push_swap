@@ -6,11 +6,11 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:58:16 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/01 16:11:57 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 11:58:40 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 static int	get_max_bits(int size)
 {

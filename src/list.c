@@ -6,11 +6,11 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 15:05:52 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/01 16:22:53 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:36:04 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 static t_data	*ft_datanew(int value)
 {
@@ -51,28 +51,48 @@ static void	ft_lst_data_index(t_list *lst, int *tab)
 	}
 }
 
+int ft_lst_is_sorted(t_list *lst)
+{
+    t_list *current;
+    t_list *next_node;
+
+	current = lst;
+	next_node = NULL;
+    while (current && current->next)
+    {
+        next_node = current->next;
+        if (((t_data *)current->content)->index
+			> ((t_data *)next_node->content)->index)
+            return (0);
+        current = current->next;
+    }
+
+    return (1);
+}
+
 t_list	*ft_init_lst(char **values)
 {
 	t_list	*lst;
 	t_data	*data;
-	int		value;
+	long	value;
 	int		*tab;
 	int		i;
 
-	if (!values)
-		return (NULL);
 	tab = (int *)malloc(ft_tablen(values) * sizeof(int));
 	lst = NULL;
 	i = 0;
 	while (values[i])
 	{
-		value = ft_atoi(values[i]);
-		tab[i] = value;
-		data = ft_datanew(value);
+		value = ft_atol(values[i]);
+		if (value > 2147483647 || value < -2147483648)
+			return (free(tab), ft_lstclear(&lst, free), NULL);
+		tab[i++] = (int)value;
+		data = ft_datanew((int)value);
 		ft_lstadd_back(&lst, ft_lstnew(data));
-		i++;
 	}
 	ft_sort_int_tab(tab, i);
+	if (contains_duplicates(tab, i))
+		return (free(tab), ft_lstclear(&lst, free), NULL);
 	ft_lst_data_index(lst, tab);
-	return (lst);
+	return (free(tab), lst);
 }

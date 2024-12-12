@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 14:44:00 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/04 18:47:36 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/12 14:56:20 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,37 +17,44 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 SRC_DIR = src/
+CMD_DIR = cmd/
 INC_DIR = include/
 OBJ_DIR = build/
 
 SRC = main.c \
 	  list.c \
 	  parse.c \
-	  push.c \
-	  radix_sort.c \
-	  rotate.c \
-	  rrotate.c \
-	  swap.c \
 	  utils.c \
-	  sort.c
+	  sort.c \
+	  calculate_moves.c \
+	  execute_moves.c
+
+CMD = rotate.c \
+	  rrotate.c \
+	  push.c \
+	  swap.c
 
 BOLD = \033[1m
 GREEN = \033[32m
 YELLOW = \033[93m
 RESET = \033[0m
 
+CMD_OBJS = $(CMD:%.c=$(OBJ_DIR)/%.o)
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: $(CMD_DIR)%.c
 	@$(CC) $(CFLAGS) -I$(LIBFT_PATH)/include -c $< -o $@
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@$(CC) $(CFLAGS) -I$(LIBFT_PATH)/include -I./include -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS)
-	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
+$(NAME): $(LIBFT) $(OBJ_DIR) $(CMD_OBJS) $(OBJ_DIR) $(OBJS)
+	@$(CC) $(CMD_OBJS) $(OBJS) $(LIBFT) -o $(NAME)
 	@echo "$(YELLOW) ➥ $(RESET)$(BOLD) push_swap $(GREEN)✔$(RESET)"
 
 $(LIBFT):

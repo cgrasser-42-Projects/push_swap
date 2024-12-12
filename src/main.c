@@ -6,11 +6,11 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:59:52 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/05 18:40:55 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:39:04 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 /*void	print(void *content)
 {
@@ -21,17 +21,31 @@
 	ft_putchar_fd('\n', 1);
 }*/
 
+
+
+void	exit_error(void)
+{
+	ft_printf("Error\n");
+	exit(EXIT_FAILURE);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_list	*lst_a;
 	t_list	*lst_b;
 	int		size;
-
-	lst_a = ft_init_lst(ft_parse(argc, argv));
+	
+	argv = ft_parse(argc, argv);
+	if (!argv)
+		exit_error();
+	lst_a = ft_init_lst(argv);
 	if (!lst_a)
-		return (ft_putendl_fd("Error", 2), 1);
+		exit_error();
+	if (ft_lst_is_sorted(lst_a))
+		return (ft_lstclear(&lst_a, free), 0);	
 	lst_b = NULL;
 	size = ft_lstsize(lst_a);
-	sort(&lst_a, &lst_b, size, 16);
+	sort(&lst_a, &lst_b, size, 6);
+	ft_lstclear(&lst_a, free);
 	return (0);
 }

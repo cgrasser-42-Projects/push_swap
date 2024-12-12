@@ -6,11 +6,11 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:51:42 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/01 16:17:06 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 14:54:57 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
 void	swap(t_list **lst)
 {

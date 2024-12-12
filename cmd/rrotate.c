@@ -6,11 +6,11 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:23:18 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/01 16:16:13 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 14:54:30 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
 static void	rrotate(t_list **lst)
 {

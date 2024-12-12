@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 13:43:21 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/01 15:39:35 by cgrasser         ###   ########.fr       */
+/*   Created: 2024/12/01 13:09:33 by cgrasser          #+#    #+#             */
+/*   Updated: 2024/12/12 14:54:15 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	push(t_list **lst_one, t_list **lst_two)
+void	rotate(t_list **lst)
 {
 	t_list	*tmp;
 
-	if (*lst_one)
-	{
-		tmp = *lst_one;
-		*lst_one = (*lst_one)->next;
-		tmp->next = *lst_two;
-		*lst_two = tmp;
-	}
+	if (!*lst && !(*lst)->next)
+		return ;
+	tmp = *lst;
+	*lst = (*lst)->next;
+	tmp->next = NULL;
+	ft_lstadd_back(lst, tmp);
 }
 
-void	pa(t_list **lst_b, t_list **lst_a)
+void	ra(t_list **lst_a)
 {
-	push(lst_b, lst_a);
-	ft_putendl_fd("pa", 1);
+	rotate(lst_a);
+	ft_putendl_fd("ra", 1);
 }
 
-void	pb(t_list **lst_a, t_list **lst_b)
+void	rb(t_list **lst_b)
 {
-	push(lst_a, lst_b);
-	ft_putendl_fd("pb", 1);
+	rotate(lst_b);
+	ft_putendl_fd("rb", 1);
+}
+
+void	rr(t_list **lst_a, t_list **lst_b)
+{
+	rotate(lst_a);
+	rotate(lst_b);
+	ft_putendl_fd("rr", 1);
 }
