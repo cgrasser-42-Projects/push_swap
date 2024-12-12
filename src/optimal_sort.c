@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculate_moves.c                                  :+:      :+:    :+:   */
+/*   optimal_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:56:12 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/12 14:24:36 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 22:36:11 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	find_position_in_a(t_list *a, int index_b)
 	return (pos + 1);
 }
 
-t_cost	calculate_best_move(t_list *a, t_list *b)
+static t_cost	calculate_best_move(t_list *a, t_list *b)
 {
 	t_cost	best_move;
 	t_cost	tmp_move;
@@ -71,7 +71,7 @@ t_cost	calculate_best_move(t_list *a, t_list *b)
 	int		size_b;
 	int		size_a;
 
-	best_move.total_cost = INT_MAX;
+	best_move.total_cost = 5000;
 	pos[0] = 0;
 	pos[1] = 0;
 	size_b = ft_lstsize(b);
@@ -89,4 +89,15 @@ t_cost	calculate_best_move(t_list *a, t_list *b)
 		pos[1]++;
 	}
 	return (best_move);
+}
+
+void	optimal_sort(t_list **a, t_list **b)
+{
+	t_cost	best_move;
+
+	while (*b)
+	{
+		best_move = calculate_best_move(*a, *b);
+		execute_best_move(a, b, best_move);
+	}
 }

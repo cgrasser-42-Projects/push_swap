@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 15:27:36 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/12 16:12:32 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 22:57:13 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,20 @@ int	ft_tablen(char **tab)
 	return (i);
 }
 
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+}
+
 int	contains_duplicates(int *arr, int size)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i < size - 1)
@@ -90,4 +100,3 @@ long	ft_atol(const char *str)
 	}
 	return (to_return * sgn);
 }
-

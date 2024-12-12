@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 15:05:52 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/12 16:36:04 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 22:42:49 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,23 +51,22 @@ static void	ft_lst_data_index(t_list *lst, int *tab)
 	}
 }
 
-int ft_lst_is_sorted(t_list *lst)
+int	ft_lst_is_sorted(t_list *lst)
 {
-    t_list *current;
-    t_list *next_node;
+	t_list	*current;
+	t_list	*next_node;
 
 	current = lst;
 	next_node = NULL;
-    while (current && current->next)
-    {
-        next_node = current->next;
-        if (((t_data *)current->content)->index
+	while (current && current->next)
+	{
+		next_node = current->next;
+		if (((t_data *)current->content)->index
 			> ((t_data *)next_node->content)->index)
-            return (0);
-        current = current->next;
-    }
-
-    return (1);
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }
 
 t_list	*ft_init_lst(char **values)

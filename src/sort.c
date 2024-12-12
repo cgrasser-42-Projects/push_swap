@@ -5,111 +5,61 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 17:35:34 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/12 14:39:55 by cgrasser         ###   ########.fr       */
+/*   Created: 2024/12/12 23:08:42 by cgrasser          #+#    #+#             */
+/*   Updated: 2024/12/13 00:40:04 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int get_min_position(t_list *a)
+void	sort_three(t_list **a, t_list **b)
 {
+	int	first;
+	int	second;
+	int	third;
+
+	first = ((t_data *)(*a)->content)->index;
+	second = ((t_data *)(*a)->next->content)->index;
+	third = ((t_data *)(*a)->next->next->content)->index;
+	if (first < second && second > third && third < first)
+		rra(a);
+	else if (first > second && second > third)
+	{
+		sa(a);
+		rra(a);
+	}
+	else if (first < second && second > third && third > first)
+	{
+		pb(a, b);
+		sa(a);
+		pa(b, a);
+	}
+	else if (first > second && second < third && third > first)
+		sa(a);
+	else
+		ra(a);
+}
+
+void	sort_five(t_list **a, t_list **b)
+{
+	int	size;
 	int	i;
-	int index_a;
 
 	i = 0;
-	while (a)
+	while (i < 2)
 	{
-		index_a = ((t_data *)(a->content))->index;
-		if (index_a == 0)
-			break ;
-		a = a->next;
-		i++;
-	}
-	return (i);
-}
-
-static void end_sort(t_list **a, int size)
-{
-	int cost;
-
-	cost = calculate_rotation_cost(size, get_min_position(*a));
-	while (cost > 0)
-	{
-		ra(a);
-		cost--;
-	}
-	while (cost < 0)
-	{
-		rra(a);
-		cost++;
-	}
-}
-
-static void	pre_sort(t_list **a, t_list **b, int *limits)
-{
-	int i;
-	int index_a;
-	int index_a_next;
-
-	i = ft_lstsize(*b);
-	while (i < (limits[2] - limits[0]) && *a)
-	{
-		index_a = ((t_data *)((*a)->content))->index;
-		if (index_a >= limits[1] && index_a < limits[2])
+		if (((t_data *)(*a)->content)->index != 0
+			&& ((t_data *)(*a)->content)->index != 4)
 		{
-			pb(a,b);
-			i++;
-		}
-		else if (index_a < limits[1] && index_a >= limits[0])
-		{
-			pb(a,b);
-			index_a_next = ((t_data *)((*a)->content))->index;
-			if (!(index_a_next >= limits[1] && index_a_next < limits[2])
-				&& !(index_a_next < limits[1] && index_a_next >= limits[0]))
-				rr(a, b);
-			else
-				rb(b);
+			pb(a, b);
 			i++;
 		}
 		else
 			ra(a);
 	}
-}
-
-static void	optimal_sort(t_list **a, t_list **b)
-{
-    while (*b)
-    {
-        t_cost best_move = calculate_best_move(*a, *b);
-        execute_best_move(a, b, best_move);
-    }
-}
-
-void 	sort(t_list **a, t_list **b, int size, int split)
-{
-	int min;
-	int max;
-	int	*limits;
-
-	min = split / 2 - 1;
-	max = split / 2 + 1;
-	limits = (int *)malloc(3 * sizeof(int));
-	if (!limits)
-		return ;
-	limits[1] = size / 2;
-	while (max < split)
-	{
-		limits[0] = min * (size / split);
-		limits[2] = max * (size / split);
-		pre_sort(a, b, limits);
-		max++;
-		min--;
-	}
-	limits[0] = 1;
-	limits[2] = size - 1;
-	pre_sort(a, b, limits);
-	free(limits);
+	if (!ft_lst_is_sorted(*a))
+		sort_three(a, b);
 	optimal_sort(a, b);
+	size = ft_lstsize(*a);
 	end_sort(a, size);
 }

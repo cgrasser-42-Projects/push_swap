@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 14:31:12 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/12 11:58:08 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/12 22:56:45 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ char	**ft_parse(int argc, char *argv[])
 	while (values[i])
 	{
 		if (!ft_str_isdigit(values[i]))
+		{
+			if (argc == 2)
+				free_tab(values);
 			return (NULL);
+		}
 		i++;
 	}
 	return (values);

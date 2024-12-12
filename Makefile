@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 14:44:00 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/12 14:56:20 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/12 23:08:33 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,12 @@ INC_DIR = include/
 OBJ_DIR = build/
 
 SRC = main.c \
-	  list.c \
 	  parse.c \
-	  utils.c \
+	  parse_utils.c \
+	  init_list.c \
 	  sort.c \
-	  calculate_moves.c \
+	  pre_sort.c \
+	  optimal_sort.c \
 	  execute_moves.c
 
 CMD = rotate.c \
