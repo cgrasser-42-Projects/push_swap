@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 14:44:00 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/12 23:08:33 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/13 00:48:21 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ SRC = main.c \
 	  parse.c \
 	  parse_utils.c \
 	  init_list.c \
+	  little_sort.c \
 	  sort.c \
-	  pre_sort.c \
 	  optimal_sort.c \
 	  execute_moves.c
 
