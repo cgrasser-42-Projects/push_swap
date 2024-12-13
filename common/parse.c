@@ -6,11 +6,11 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 14:31:12 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/12 22:56:45 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 02:41:23 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "common.h"
 
 static int	ft_str_isdigit(char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:43:21 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/12 14:53:59 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 02:42:24 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "common.h"
 
 void	push(t_list **lst_one, t_list **lst_two)
 {

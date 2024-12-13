@@ -6,11 +6,11 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 15:27:36 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/12 22:57:13 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 02:42:03 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "common.h"
 
 int	ft_tablen(char **tab)
 {

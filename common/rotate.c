@@ -6,11 +6,11 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:09:33 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/12 14:54:15 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 02:43:08 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "common.h"
 
 void	rotate(t_list **lst)
 {
