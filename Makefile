@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 14:44:00 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/13 02:46:59 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/13 13:50:07 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,21 +79,21 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 clean:
-	@echo "$(BOLD) Submodule libft $(YELLOW)⮯ $(RESET)"
+	@echo "$(BOLD) libft $(YELLOW)⮯ $(RESET)"
 	@make -s -C $(LIBFT_PATH) clean
-	@echo "$(BOLD) Push_swap $(YELLOW)⮯ $(RESET)"
-	@echo "$(BOLD) ⋅ Cleaned all object files ! $(GREEN)✔$(RESET)\n"
+	@echo "$(BOLD) $(NAME) $(YELLOW)⮯ $(RESET)"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned all object files ! $(GREEN)✔$(RESET)\n"
 	@$(RM) $(OBJ_DIR)
 
 fclean:
-	@echo "$(BOLD) Submodule libft $(YELLOW)⮯ $(RESET)"
+	@echo "$(BOLD) libft $(YELLOW)⮯ $(RESET)"
 	@make -s -C $(LIBFT_PATH) fclean
-	@echo "$(BOLD) Push_swap $(YELLOW)⮯ $(RESET)"
+	@echo "$(BOLD) $(NAME) $(YELLOW)⮯ $(RESET)"
 	@$(RM) $(OBJ_DIR)
-	@echo "$(BOLD) ⋅ Cleaned all object files ! $(GREEN)✔$(RESET)"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned all object files ! $(GREEN)✔$(RESET)"
 	@$(RM) $(NAME)
 	@$(RM) $(NAME_CHECKER)
-	@echo "$(BOLD) ⋅ Cleaned $(NAME)/$(NAME_CHECKER) ! $(GREEN)✔$(RESET)"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned $(NAME)/$(NAME_CHECKER) ! $(GREEN)✔$(RESET)"
 
 re: fclean all
 
