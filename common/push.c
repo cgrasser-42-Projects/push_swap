@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:43:21 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/13 02:42:24 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 22:05:42 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,16 @@ void	push(t_list **lst_one, t_list **lst_two)
 	}
 }
 
-void	pa(t_list **lst_b, t_list **lst_a)
+void	pa(t_list **lst_b, t_list **lst_a, int flag)
 {
 	push(lst_b, lst_a);
-	ft_putendl_fd("pa", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("pa\n");
 }
 
-void	pb(t_list **lst_a, t_list **lst_b)
+void	pb(t_list **lst_a, t_list **lst_b, int flag)
 {
 	push(lst_a, lst_b);
-	ft_putendl_fd("pb", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("pb\n");
 }

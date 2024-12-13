@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:23:18 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/13 02:43:25 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 22:02:30 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,24 @@ static void	rrotate(t_list **lst)
 	*lst = last;
 }
 
-void	rra(t_list **lst_a)
+void	rra(t_list **lst_a, int flag)
 {
 	rrotate(lst_a);
-	ft_putendl_fd("rra", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("rra\n");
 }
 
-void	rrb(t_list **lst_b)
+void	rrb(t_list **lst_b, int flag)
 {
 	rrotate(lst_b);
-	ft_putendl_fd("rrb", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("rrb\n");
 }
 
-void	rrr(t_list **lst_a, t_list **lst_b)
+void	rrr(t_list **lst_a, t_list **lst_b, int flag)
 {
 	rrotate(lst_a);
 	rrotate(lst_b);
-	ft_putendl_fd("rrr", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("rrr\n");
 }

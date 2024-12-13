@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 23:08:42 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/13 03:02:56 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 22:10:52 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@ void	sort_three(t_list **a, t_list **b)
 	second = ((t_data *)(*a)->next->content)->index;
 	third = ((t_data *)(*a)->next->next->content)->index;
 	if (first < second && second > third && third < first)
-		rra(a);
+		rra(a, EXEC_PRINT);
 	else if (first > second && second > third)
 	{
-		sa(a);
-		rra(a);
+		sa(a, EXEC_PRINT);
+		rra(a, EXEC_PRINT);
 	}
 	else if (first < second && second > third && third > first)
 	{
-		pb(a, b);
-		sa(a);
-		pa(b, a);
+		pb(a, b, EXEC_PRINT);
+		sa(a, EXEC_PRINT);
+		pa(b, a, EXEC_PRINT);
 	}
 	else if (first > second && second < third && third > first)
-		sa(a);
+		sa(a, EXEC_PRINT);
 	else
-		ra(a);
+		ra(a, EXEC_PRINT);
 }
 
 void	sort_five(t_list **a, t_list **b)
@@ -51,11 +51,11 @@ void	sort_five(t_list **a, t_list **b)
 		if (((t_data *)(*a)->content)->index != 0
 			&& ((t_data *)(*a)->content)->index != 4)
 		{
-			pb(a, b);
+			pb(a, b, EXEC_PRINT);
 			i++;
 		}
 		else
-			ra(a);
+			ra(a, EXEC_PRINT);
 	}
 	if (!ft_lst_is_sorted(*a))
 		sort_three(a, b);

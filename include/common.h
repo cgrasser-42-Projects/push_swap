@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 21:58:56 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/13 03:00:15 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 22:04:52 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define COMMON_H
 
 # include "libft.h"
+
+# define EXEC_PRINT 0
+# define EXEC 1
 
 //=============================================================| LIST / DATA |
 
@@ -28,17 +31,17 @@ t_list	*ft_init_lst(char **values);
 
 //=====================================================================| CMD |
 
-void	pa(t_list **lst_b, t_list **lst_a);
-void	pb(t_list **lst_a, t_list **lst_b);
-void	ra(t_list **lst_a);
-void	rb(t_list **lst_b);
-void	rr(t_list **lst_a, t_list **lst_b);
-void	rra(t_list **lst_a);
-void	rrb(t_list **lst_b);
-void	rrr(t_list **lst_a, t_list **lst_b);
-void	sa(t_list **lst_a);
-void	sb(t_list **lst_b);
-void	ss(t_list **lst_a, t_list **lst_b);
+void	pa(t_list **lst_b, t_list **lst_a, int flag);
+void	pb(t_list **lst_a, t_list **lst_b, int flag);
+void	ra(t_list **lst_a, int flag);
+void	rb(t_list **lst_b, int flag);
+void	rr(t_list **lst_a, t_list **lst_b, int flag);
+void	rra(t_list **lst_a, int flag);
+void	rrb(t_list **lst_b, int flag);
+void	rrr(t_list **lst_a, t_list **lst_b, int flag);
+void	sa(t_list **lst_a, int flag);
+void	sb(t_list **lst_b, int flag);
+void	ss(t_list **lst_a, t_list **lst_b, int flag);
 
 //===================================================================| PARSE |
 

@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:09:33 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/13 02:43:08 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 22:00:12 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,24 @@ void	rotate(t_list **lst)
 	ft_lstadd_back(lst, tmp);
 }
 
-void	ra(t_list **lst_a)
+void	ra(t_list **lst_a, int flag)
 {
 	rotate(lst_a);
-	ft_putendl_fd("ra", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("ra\n");
 }
 
-void	rb(t_list **lst_b)
+void	rb(t_list **lst_b, int flag)
 {
 	rotate(lst_b);
-	ft_putendl_fd("rb", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("rb\n");
 }
 
-void	rr(t_list **lst_a, t_list **lst_b)
+void	rr(t_list **lst_a, t_list **lst_b, int flag)
 {
 	rotate(lst_a);
 	rotate(lst_b);
-	ft_putendl_fd("rr", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("rr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 17:35:34 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/13 00:33:41 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 22:10:11 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	end_sort(t_list **a, int size)
 	cost = calculate_rotation_cost(size, get_min_position(*a));
 	while (cost > 0)
 	{
-		ra(a);
+		ra(a, EXEC_PRINT);
 		cost--;
 	}
 	while (cost < 0)
 	{
-		rra(a);
+		rra(a, EXEC_PRINT);
 		cost++;
 	}
 }
@@ -50,13 +50,13 @@ static void	pre_sort_rr(t_list **a, t_list **b, int *limits)
 {
 	int	index_a_next;
 
-	pb(a, b);
+	pb(a, b, EXEC_PRINT);
 	index_a_next = ((t_data *)((*a)->content))->index;
 	if (!(index_a_next >= limits[1] && index_a_next < limits[2])
 		&& !(index_a_next < limits[1] && index_a_next >= limits[0]))
-		rr(a, b);
+		rr(a, b, EXEC_PRINT);
 	else
-		rb(b);
+		rb(b, EXEC_PRINT);
 }
 
 static void	pre_sort(t_list **a, t_list **b, int *limits)
@@ -70,7 +70,7 @@ static void	pre_sort(t_list **a, t_list **b, int *limits)
 		index_a = ((t_data *)((*a)->content))->index;
 		if (index_a >= limits[1] && index_a < limits[2])
 		{
-			pb(a, b);
+			pb(a, b, EXEC_PRINT);
 			i++;
 		}
 		else if (index_a < limits[1] && index_a >= limits[0])
@@ -79,7 +79,7 @@ static void	pre_sort(t_list **a, t_list **b, int *limits)
 			i++;
 		}
 		else
-			ra(a);
+			ra(a, EXEC_PRINT);
 	}
 }
 

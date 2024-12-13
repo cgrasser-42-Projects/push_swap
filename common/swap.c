@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 13:51:42 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/13 02:43:41 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 22:04:21 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,24 @@ void	swap(t_list **lst)
 	*lst = second;
 }
 
-void	sa(t_list **lst_a)
+void	sa(t_list **lst_a, int flag)
 {
 	swap(lst_a);
-	ft_putendl_fd("sa", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("sa\n");
 }
 
-void	sb(t_list **lst_b)
+void	sb(t_list **lst_b, int flag)
 {
 	swap(lst_b);
-	ft_putendl_fd("sb", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("sb\n");
 }
 
-void	ss(t_list **lst_a, t_list **lst_b)
+void	ss(t_list **lst_a, t_list **lst_b, int flag)
 {
 	swap(lst_a);
 	swap(lst_b);
-	ft_putendl_fd("ss", 1);
+	if (flag == EXEC_PRINT)
+		ft_printf("ss\n");
 }
