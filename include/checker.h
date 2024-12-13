@@ -6,14 +6,13 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 01:29:43 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/13 01:31:14 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/13 03:00:59 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-#include "cmd.h"
-
+# include "common.h"
 
 #endif
