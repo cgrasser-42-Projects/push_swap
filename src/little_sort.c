@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 23:08:42 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/13 22:10:52 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/14 18:19:28 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	sort_three(t_list **a, t_list **b)
 	int	second;
 	int	third;
 
+	b = NULL;
 	first = ((t_data *)(*a)->content)->index;
 	second = ((t_data *)(*a)->next->content)->index;
 	third = ((t_data *)(*a)->next->next->content)->index;
@@ -30,9 +31,8 @@ void	sort_three(t_list **a, t_list **b)
 	}
 	else if (first < second && second > third && third > first)
 	{
-		pb(a, b, EXEC_PRINT);
 		sa(a, EXEC_PRINT);
-		pa(b, a, EXEC_PRINT);
+		ra(a, EXEC_PRINT);
 	}
 	else if (first > second && second < third && third > first)
 		sa(a, EXEC_PRINT);

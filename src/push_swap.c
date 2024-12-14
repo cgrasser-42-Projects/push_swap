@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:59:52 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/13 00:39:06 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/14 19:15:09 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	exit_error(void)
 {
-	ft_printf("Error\n");
+	ft_putendl_fd("Error", 2);
 	exit(EXIT_FAILURE);
 }
 
